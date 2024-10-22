@@ -1,95 +1,76 @@
-import Image from "next/image";
+"use client";
+import React, { useEffect } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  useEffect(() => {
+    const form = document.getElementById("myForm");
 
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+    form.onsubmit = (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const notes = document.getElementById("notes").value;
+
+      console.log("Form Submitted:", { name, notes });
+      var targetElement = document.getElementById("cardlist");
+      var newHtml =
+        `<div class="card"
+          <div class="card-header">
+            <div class="card-title">` +
+              name +
+            `</div>
+          </div>
+          <div class="card-content">` +
+            notes +
+          `</div>
+        </div>`;
+      targetElement.innerHTML += newHtml;
+    };
+}, []);
+
+const isList = true;
+return (
+  <main className={styles.main}>
+    <section id="form" className={styles.section} style={{ display: "none" }}>
+      <div className={styles.width50p}>
+        <h2 className={styles.sectionTitle}>Create Note</h2>
+        <form id="myForm" className={styles.form}>
+          <label className={styles.label} htmlFor="name">
+            Title:
+          </label>
+          <input className={styles.input} type="text" id="name" name="name" />
+          
+          <label className={styles.label} htmlFor="notes">
+            Note:
+          </label>
+          <textarea className={styles.textarea} id="notes" name="notes"></textarea>
+          
+          <button className={styles.button} type="submit">
+            Tambahkan
+          </button>
+        </form>
+      </div>
+    </section>
+    
+    <section
+      id="listnote"
+      className={styles.section}
+      style={{ display: "block" }}
+    >
+      <h2 className={styles.sectionTitle}>List Note </h2>
+      <div id="cardlist">
+        <div className="card">
+          <div className="card-header">
+            <div className="card-title">Card Title</div>
+          </div>
+          <div className="card-content">
+            This is a sample card with some content. You can edit
+            or delete
+            this card using the icons above.
+          </div>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+      </div>
+    </section>
+  </main>
   );
 }
