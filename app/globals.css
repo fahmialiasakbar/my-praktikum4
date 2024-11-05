@@ -38,3 +38,15 @@
   font-size: 1em;
   color: #333;
 }
+.white {
+  background-color: white;
+}
+.red {
+  background-color: red;
+}
+.blue {
+  background-color: blue;
+}
+.yellow {
+  background-color: yellow;
+}
