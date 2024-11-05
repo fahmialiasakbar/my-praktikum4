@@ -18,7 +18,7 @@ export default function Navigation() {
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <div>
-                    <h1 style={{color: "white"}}>Notes Next.js</h1>
+                    <h1 style={{color: "white"}}>Cafe Tari A</h1>
                 </div>
                 <ul>
                     <li>

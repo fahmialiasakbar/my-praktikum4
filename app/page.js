@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import styles from "./page.module.css";
 
 export default function Home() {
+  const [isList, setIsList] = useState(false);
+
   useEffect(() => {
     const form = document.getElementById("myForm");
 
@@ -50,7 +52,10 @@ export default function Home() {
 
 return (
   <main className={styles.main}>
-    <section id="form" className={styles.section}>
+    <section id="form" 
+      className={styles.section} 
+      style={{ display: isList ? "none" : "flex" }}
+      >
       <div className={styles.width50p}>
         <h2 className={styles.sectionTitle}>Tambah Menu</h2>
         <form id="myForm" className={styles.form}>
@@ -88,6 +93,7 @@ return (
     <section
       id="listnote"
       className={styles.section}
+      style={{ display: isList ? "block" : "none" }}
     >
 
       <h2 id="makanan" className={styles.sectionTitle}>Makanan</h2>
