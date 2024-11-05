@@ -1,4 +1,4 @@
-#cardlist {
+#cardlist-makanan, #cardlist-minuman {
   display: flex;
   flex-wrap: wrap;
 }

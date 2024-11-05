@@ -11,7 +11,7 @@ export default function Navigation() {
 
     function openlist(e) {
         console.log("click from", e)
-        document.getElementById("listnote").style.display = "flex"
+        document.getElementById("listnote").style.display = "block"
         document.getElementById("form").style.display = "none"
     }
     return (
@@ -22,10 +22,10 @@ export default function Navigation() {
                 </div>
                 <ul>
                     <li>
-                        <a onClick={(e) => openlist(e)}>List</a>
+                        <a onClick={(e) => openlist(e)}>Menu</a>
                     </li>
                     <li>
-                        <a onClick={(e) => openform(e)}>Add</a>
+                        <a onClick={(e) => openform(e)}>Tambah</a>
                     </li>
                 </ul>
             </nav>
